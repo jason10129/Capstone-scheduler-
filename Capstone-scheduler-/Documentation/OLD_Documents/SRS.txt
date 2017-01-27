@@ -1,0 +1,504 @@
+﻿Project Name  Concordia Scheduler
+Version 2.0
+Software Requirements Specification
+Last Modified:  November, 13th, 2016
+Software Requirements Specification
+
+Version 2.0 for <Project name>
+Prepared by
+
+
+Name
+	StudentID
+	Email
+	Lance Lafontaine 26349188 lance.lafontaine92@gmail.com
+	Jason Tsalikis	25892120 jtsalikis@hotmail.ca
+	Lenz Petion 26775837 lenzpetion@gmail.com
+	Rameen Rastan-Vadiveloo 27191863 rameenrastanv@hotmail.com 
+	Benny Zhao	272051404 bennyzhao@live.ca
+
+
+Instructor
+	Dr. Constantinos Constantinides
+	Course SOEN 343
+Software Architecture and Design I
+	Date:??
+	
+________________
+
+
+Document History
+
+
+Date
+	Version
+	Description
+	Authors
+	Saturday October 8th 2016
+	0.1
+	
+	All
+	Saturday October 23rd
+	0.2
+	
+	Simeon Cvetkovic,
+Lance Lafontaine
+	
+_______________
+
+
+Table of contents
+        
+1.      Introduction        5
+        Purpose        5
+        Scope        5
+        Definitions, acronyms, and abbreviations        5
+        References        5
+2.        Overall         description        6
+        Product perspective        6
+        Product functions        6
+        User characteristics        6
+        Constraints        6
+        Assumptions and         dependencies        6
+3.        Specific         requirements        7
+        External interfaces        7
+        Functionality        7
+        Actor goal list        7
+        Use case view        8
+        Reliability        8
+        Usability        8
+        Efficiency        8
+        Maintainability        9
+        Portability        9
+        Design constraints        9
+        (On-line) user         documentation and help        9
+        Purchased components        9
+        Licensing requirements        9
+        Legal, copyright and         other notices        9
+3.        Analysis         Models        10
+        
+
+________________
+
+
+List of figures
+        
+Figure         1. Use case model.        7
+
+________________
+
+
+INTRODUCTION
+
+	The essence of the project is a web application that displays
+room availabilities and allows users to reserve those rooms for a
+specific time slot. Below in this document the goal is to understand
+and document the requirements of the system, make sure they are 
+feasible and consistent with each other. The purpose and scope are
+written; the description of constraints and assumptions of the project 
+are noted. In the specific requirements section the functional and 
+nonfunctional requirements are documented. A use case model and 
+domain model is present; from which use cases are derived. 
+Critical use cases are identified, the respective system sequence 
+diagrams are shown, with the system operations, the operation 
+contracts followed the interaction diagrams. 
+
+
+Purpose
+
+	The srs is a contract between developers and stackholders; 
+given such it is meant to be read by both stackholders and developers 
+and validate all requiments. The structure is such that we decribe 
+what is feasable and the constraints we have on the system. Following 
+that the requiments for the system are detailed, both functinal and 
+nonfunctional. Thano use case models, use cases and the domain model. 
+The use cases tell us a story of how our system behaves. 
+Stackholder can verify these "stories" upon reading if it matches 
+their requriments. 
+
+
+Scope
+
+The project allows a user to log into the webpage. A schedule 
+appears wiht a list of rooms; the user can view the scheduele for 
+different rooms and see avaliable timeslots. The user can thus book 
+a timeslot for a room or if desired timeslot is taken can go on the 
+waitlist. The goals essentialy is to allow users find a room that 
+is free and book a timeslot, and should it all be taken go on the waitlist. 
+This will allow students to organize meetings with far more ease. 
+
+
+
+Definitions, acronyms, and abbreviations
+Srs : Software Requirments Specification
+
+
+
+Term	Definition
+User: Someone who interacts with the reservation system.
+Registry: A system for keeping a official record of room reservation
+Room:
+Wait list: A list of people waiting for something, especially 
+			housing or admission to a school.
+Reservation: The action  of reserving something
+Time Slot: A conventionally defined time interval in a schedule.
+Calendar: A chart or series of pages showing the days, weeks, and months 
+			of a particular year, or giving particular seasonal information
+Stakeholder: An individual, group, or organization, who may affect,
+			 be affected by, or perceive itself to be affected by a 
+			 decision, activity, or outcome of a project.
+Python: Python is a high-level, general-purpose programming language
+
+
+References
+Provide a list of all documents referenced in the SRS.
+
+
+
+OVERALL DESCRIPTION
+This section describes a background to the requirements: 
+The general factors that affect the product, such as 
+constraints, assumptions and dependencies.
+
+
+Product perspective
+	The product is available to all concordia engineering students. 
+It is a web based application that uses layered architecture + client 
+server architecture. It works among all the major browsers. User account, 
+the system allows the user to login to their accounts in the system 
+and provide features of updating and viewing their reservations. The 
+system can support a small to medium number of users as it is hosted off a computer. 
+
+
+Product functions
+	The major system functions provided by the product to a user 
+include making a new reservation for an available room at a desired 
+timeslot, entering the waiting list for a booked room at a desired 
+timeslot, deleting an existing room reservation, modifying an 
+existing reservation, and viewing their current reservations. 
+
+* User characteristics
+	The intended users of this product are students studying 
+in the Engineering department of Concordia University. The user 
+is not expected to have a particularly high level of experience 
+or technical expertise in software systems, they are merely are 
+expected to be at a University educational level. 
+
+
+Constraints
+	The system must promote fairness by limiting the number of 
+reservations a given user can occupy at a time. The system must 
+also incorporate a level of safety and security, by ensuring a 
+user’s credentials and information cannot be accessed by other 
+users of the system, and also that a user’s information, such 
+as their current reservations or waiting list status, cannot 
+be overwritten by another user. If two or more users make a 
+reservation for an available room simultaneously, the system 
+must award the reservation to one user, and provide an error 
+message to the other user(s). 
+
+
+Assumptions and dependencies
+	As a web application, the system’s main dependency will be 
+a web browser. It is assumed that the system will be compatible 
+with all major operating systems (Windows, Linux and macOS). It 
+is expected to be compatible with all modern browsers that respect 
+HTML5 web standards. It assumes that rooms will be available for 
+reservation on any day of the week, including weekends, with 
+the exception of holidays recognized by the University.
+
+
+
+SPECIFIC REQUIREMENTS 
+This section contains all requirements in detail: Functional as 
+well as non-functional requirements (quality attributes and constraints). 
+The quality attributes are listed according to the ISO/IEC 25010 standard 
+that classifies software quality in a structured set of characteristics and sub-characteristics.
+
+
+External interfaces
+1-	Input: Username and Password (login credentials)
+	Output: Error message if the user isn’t found in the database
+
+
+2-	Input: Make room reservation (Day, Time slot, Room number)
+	Output: Success message if reservation was made, error message if not.
+
+
+3-	Input: Room Number
+	Output: Weekly Calendar showing the room information (time slot statuses)
+
+
+4-	Input: Modify room reservation (Room Number, Old Time Slot, New Time Slot)
+Output: Success message if modification is successful, error message if not.
+
+
+5-	Input: Cancel room reservation (Day, Time Slot, Room Number)
+Output: Success message if cancellation is successful, error message if not.
+
+
+Functionality
+
+
+Functional Requirements
+
+
+The system shall permit a student to book a room reservation at a given time slot.
+
+
+The system shall permit a student to modify an existing room reservation to a new time slot.
+
+
+The system shall permit a student to cancel an existing room reservation.
+
+
+The system shall permit a student to view a weekly calendar of all reservation availabilities for a room.
+
+
+The system shall permit a student to enter the wait list for a reservation at an unavailable time slot. 
+
+
+Actor goal list
+                        
+Actor  Goal
+
+
+			
+Actor: Student
+		
+Goal:  Log in
+
+
+Actor : Student
+
+
+Goal : View rooms
+
+
+Actor : Student 
+
+
+Goal : Make room reservation
+
+
+Actor : Student 
+
+
+Goal : View room weekly calendar
+
+
+Actor : Student 
+
+
+Goal : Cancel room reservation
+
+
+Actor : Student 
+
+
+Goal : Modify room reservation
+                
+
+Use case view
+The use case model is shown in Figure 1.
+
+
+Figure 1. Use case model.
+
+
+Accessibility
+Only ENCS registered students in the database should have access to the web application. 
+
+
+Usability
+90% of users will be able to perform all major activities provided by the system in less than 3 minutes.
+
+Portability
+The web application should function on all major web browsers and operating systems. 
+
+
+Design constraints
+-Used languages: HTML, CSS JavaScript, Python, SQL
+-Framework: Django
+
+
+(On-line) user documentation and help
+Description.
+
+
+Purchased components
+No purchased components for this project.
+
+
+Licensing requirements
+No licensing requirements for this project.
+
+
+Legal, copyright and other notices
+Intellectual property
+
+
+
+ANALYSIS MODELS
+
+Domain Model 
+
+(Insert Domain Model)
+
+
+
+Use Cases
+
+
+Use case UC1: Make Reservation
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions:
+User is authenticated in system
+Success Guarantee (Postconditions):
+User has booked a room
+Main Success Scenario (or basic flow):
+User chooses the option to make a reservation.
+System prompts for a room and timeslot
+User selects a room and timeslot.
+System creates a reservation and cancels all other User's reserations that are on a waiting list for the same timeslot in all rooms.
+System returns a confirmation message.
+Extensions (or alternative flows):
+4a. Timeslot is already reserved by another user
+4a.1 System creates a reservation and place it on the waiting list for that timeslot in the selected room.
+4b. User has exceeded the number of allowed reservations for that week.
+4b.1 System returns an error message.
+4c. User already has a reservation for that timeslot.
+4c.1 System returns an error message.
+
+
+
+Use case UC2: View Reservation
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions:
+User is authenticated in system
+Success Guarantee (Postconditions):
+User can view a room’s weekly calender
+Main Success Scenario (or basic flow):
+User selects room and week.
+System displays all weekly reservations for the selected room.
+
+
+
+Use case UC3: Modify Reservation
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions: 
+User is authenticated in system
+User is authenticated. User has a reservation.
+Success Guarantee (Postconditions):
+User reserved a room for a timeslot. 
+Main Success Scenario (or basic flow):
+User chooses the option to modify a reservation.
+System prompts for a room, week and timeslot.
+User selects a room, week and timeslot.
+ System modifies the reservation and cancels all other User's reserations that are on a waiting list for the same timeslot in all rooms.
+System returns a confirmation message.
+Extensions (or alternative flows):
+4a. Timeslot is already reserved by another user
+4a.1 System creates a reservation and place it on the waiting list for that timeslot in the select room.
+4b. User has exceeded the number of allowed reservations for that week.
+4b.1 System returns an error message.
+ 4c. User already has a reservation for that timeslot.
+4c.1 System returns an error message.
+
+		
+		
+Use case UC4: Cancel Reservation
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions:
+User is authenticated in system
+The user has an existing reservation
+Success Guarantee (Postconditions):
+User has cancelled his reservation 
+Main Success Scenario (or basic flow):
+User chooses the option to cancel a reservation.
+
+	
+
+Use case UC5: Log in
+Level : subroutine
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions:
+User is registered in the system
+Success Guarantee (Postconditions):
+User is identified and authenticated
+Main Success Scenario (or basic flow):
+User enters credentials
+System confirms authentication
+Extensions (or alternative flows):
+2a. Invalid username or password
+2a.1 System returns error message
+
+Use case UC5: Log out
+Level: subroutine
+Primary Actor: User
+Stakeholders and Interests:
+Preconditions:
+User is authenticated in system
+Success Guarantee (Postconditions):
+User is logged out 
+Main Success Scenario (or basic flow):
+User indicates that he/she wants to log out
+System logs out User
+
+
+System Sequence Diagrams
+(Insert SSDs)
+
+
+System Operations
+
+makeReservation(username, roomNumber, timeslot)
+viewReservations(roomNumber)
+modifyReservation(username, oldRoomNumber, newRoomNumber, oldTimeslot, newTimeslot)
+cancelReservation(username, roomNumber, timeslot)
+
+
+Operation Contracts
+
+
+Contract C01: makeReservation
+Operation: makeReservation(username, roomNumber, timeslot)
+Cross Reference : UC1 Make Reservation
+Preconditions: None
+Postconditions:
+	- A Reservation instance reserv was created. (instance created)
+	- reserv was associated with Room. (association formed)
+	- reserv was associated with User. (association formed)
+
+
+Contract C02: viewReservations
+Operation: viewReservations(roomNumber, timeslot)
+Cross Reference : UC2 View Reservation
+Preconditions:None
+Postconditions:None
+
+
+Contract C03: modifyReservation
+Operation: modifyReservation(username, oldRoomNumber, newRoomNumber, oldTimeslot, newTimeslot)
+Cross Reference : UC3 Modify Reservation
+Preconditions:
+    - A Reservation reserv has been created and is associated to a User (user) and a Room (oldRoom).
+
+Postconditions:
+	- Reservation.timeslot was set to newTimeslot (attribute modification)
+	- Reservation.roomNumber was set to newRoomNumber (attribute modification)
+	- Reservation was association with a Room (newRoom)
+	- Association between oldRoom and reserv has been broken.
+
+Contract C04: cancelReservation
+Operation: cancelReservation(username, roomNumber, timeslot)
+Cross Reference : UC4 Cancel Reservation
+Preconditions:
+     - A Reservation has been created.
+Postconditions:
+    - A Reservation instance was deleted. (instance deletion)
